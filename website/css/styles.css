@@ -1,0 +1,212 @@
+
+
+.column_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column_header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+#section1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* align-items: center; */
+}
+
+
+/* The popup form - hidden by default */
+.form-popup-wishlist, .formInvestment{
+  display: none;
+  position: fixed;
+  top: 20;
+  left: 445px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.initialForm {
+  display: block;
+  position: fixed;
+  top: 20;
+  left: 445px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container-wishlist, .initialFormContainer, .formInvestment {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container-wishlist input[type=text]{
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.initialFormContainer input[type=text]{
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.formInvestment input[type=text]{
+    width: 80%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+
+/* When the inputs get focus, do something */
+.form-container-wishlist input[type=text]:focus, .initialFormContainer input[type=text]:focus, .formInvestment input[type=text]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container-wishlist .btn-wishlist, .initialFormContainer .btnInitialForm,.formInvestment .btnInvestment {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container-wishlist .cancel-wishlist {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container-wishlist .btn-wishlist:hover, .open-button-wishlist:hover {
+  opacity: 1;
+}
+
+.formInvestment .btnInvestment:hover, .investmentAddButton{
+    opacity: 1;
+}
+
+
+.initialFormContainer .btnInitialForm{
+    opacity: 1;
+  }
+
+
+
+
+
+
+
+
+  .container{
+    display : grid;
+    grid-gap: 10px;
+    grid-template-rows : auto auto auto;
+    grid-template-columns : repeat(3, 1fr);
+    grid-template-areas :
+    "main main main main main main main main";
+    /* justify-content: center; */
+    /* align-items: center; */
+    width : 100%;
+    /* margin : auto; */
+    /* margin-top : 150px; */
+}
+
+.content{
+    grid-area: main;
+}
+
+
+.blog_element{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid purple;
+}
+
+.blog_box{
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-image: linear-gradient(to right, white, #a300bf); */
+    background-color: white;
+    color: purple;
+    text-align: center;
+    gap: 15px;
+    padding: 40px;
+}
+
+.blog_container {
+    display : grid;
+    grid-auto-rows: minmax(50px, 250px);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap : 10px;
+    justify-content : center;
+}
+
+
+.avatar_image{
+    width: 130px;
+    height: 150px;
+}
+
+
+.serif{
+    font-family: "Times New Roman", Times, serif;
+    font-size: large;
+    font-weight: bolder;
+}
+
+
+#demo{
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+canvas{
+
+    width:600px !important;
+    height:600px !important;
+  
+  }

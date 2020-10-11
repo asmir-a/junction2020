@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manipulating the DOM</title>
+  <!-- Load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:900|Merriweather&display=swap" rel="stylesheet">  <!-- Load Styles -->
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- HTML Follows BEM naming conventions 
+  IDs are only used for sections to connect menu achors to sections -->
+  <header class="page__header">
+    <nav class="navbar__menu">
+      <!-- Navigation starts as empty UL that will be populated with JS -->
+      <ul id="navbar__list"></ul>
+    </nav>
+  </header>
+  <main>
+    <header class="main__hero">
+    </header>
+    <!-- Each Section has an ID (used for the anchor) and 
+    a data attribute that will populate the li node.
+    Adding more sections will automatically populate nav.
+    The first section is set to active class by default -->
+    <div class="initialForm" id="myInitialForm">
+        <form class="initialFormContainer">
+          <h1>Your Info</h1>
+      
+          <label for="Salary"><b>Wjat is your current Salary?</b></label>
+          <input type="text" placeholder="What is your salary" name="Salary" id = "salaryForm" required>
+          
+          <label for="CurrentAssets"><b>Current Assets</b></label>
+          <input type="text" placeholder="Enter the value of the current assets" name="currentAssets" id = "currentAssetsForm" required>
+          
+            
+          <label for="Food"><b>How much do you spend on food per month?</b></label>
+          <input type="text" placeholder="Food Price" name="Food" id = "currentFoodForm" required>
+
+          <label for="Insurance"><b>What is the insurance price?</b></label>
+          <input type="text" placeholder="What is your insurance cost?" name="Insurance" id = "currentInsuranceForm" required>
+
+          <label for="Rent"><b>What is the rent price?</b></label>
+          <input type="text" placeholder="What is your rent cost?" name="Rent" id = "currentRentForm" required>
+
+
+          <!-- <label for="psw"><b>Password</b></label> -->
+          <!-- <input type="password" placeholder="Enter Password" name="psw" required> -->
+      
+          <button type="button" class="btnInitialForm enterInitialForm" onclick="enterInitialForm()">Enter</button>
+          <!-- <button type="button" class="btnInitialForm cancelInitialForm" onclick = "closeInitialForm()">Cancel</button> -->
+        </form>
+    </div>
+    <p id="demo"></p>
+    <section id="section1" data-nav="Section 1" class="your-active-class">
+        
+        <div class="formInvestment" id="myFormInvestment">
+            <form class="formContainerInvestment">
+              <h1>Investments?</h1>
+          
+              <label for="investmentItem"><b>What company stock did you buy?</b></label>
+              <input type="text" placeholder="Enter the company name" name="investmentItem" id = "investmentItemForm" required>
+
+              <label for="investmentPriceItem"><b>How much money did you spend on it?</b></label>
+              <input type="text" placeholder="Enter the amount" name="investmentPriceItem" id = "investmentPriceItemForm" required>
+          
+              <button type="button" class="btnInvestment enterInvestment" onclick="enterFormInvestment()">Enter</button>
+              <button type="button" class="btnInvestment cancelInvestment" onclick = "closeFormInvestment()">Cancel</button>
+            </form>
+        </div>
+        
+        
+        <div class="form-popup-wishlist" id="myForm-wishlist">
+            <form class="form-container-wishlist">
+              <h1>Wishlist</h1>
+          
+              <label for="wishlistItem"><b>What do you wish to buy?</b></label>
+              <input type="text" placeholder="Enter What You Want To Buy" name="wishlistItem" id = "wishlistItemForm" required>
+          
+              <button type="button" class="btn-wishlist enter-wishlist" onclick="enterFormWishlist()">Enter</button>
+              <button type="button" class="btn-wishlist cancel-wishlist" onclick = "closeFormWishlist()">Cancel</button>
+            </form>
+        </div>
+
+        <div class = "column" id = "wishlist">
+            <div class = "column_header">
+                <h2> Wishlist </h2>
+                <button class="open-button-wishlist" onclick="openFormWishlist()"> + </button>
+            </div>
+            <div class = "column_container_wishlist">
+                <div> Headphones </div>
+                <div> Adidas Suit </div>
+                <div> iMac </div>
+            </div>
+        </div>
+        <div class = "column" id = expenses>
+            <div class = "column_header">
+                <h2> Expenses </h2>
+                <button> + </button>
+            </div>
+            <div class = "column_container">
+                <div>
+                    <h2>Regular Expenses</h2>
+                    <h3>Rent</h3>
+                    <div id = "RentShow"></div>
+                    <h3>Insurance</h3>
+                    <div id = "InsuranceShow"></div>
+                </div>
+                <div>
+                    <h3>Food</h3>
+                    <div id = "FoodShow"></div>
+                    <h3>Necessities</h3>
+
+                </div>
+            </div>
+        </div>
+        <div class = "column" id = "income">
+            <div class = "column_header">
+                <h2> Income </h2>
+                <button> + </button>
+            </div>
+            <div class = "column_container">
+                <div>
+                    <h2> Regular Income </h2>
+                    <h3>Salary</h3>
+                    <div id = "SalaryShow"></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class = "column" id = "investment">
+            <div class = "column_header">
+                <h2> Investments </h2>
+                <button class = "investmentAddButton" onclick="openFormInvestment()"> + </button>
+            </div>
+            <div class = "column_container">
+                <div> Rakuten </div>
+                <div> Netflix </div>
+                <div> Nvidia </div>
+            </div>
+        </div>
+    </section>
+    <section id="section2" data-nav="Section 2">
+      <div class="content blog_container">
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+        <div class = "blog_element">
+            <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg/1920px-Sea_shell_%28Trinidad_%26_Tobago_2009%29.jpg" class = "avatar_image">
+            <div class = "blog_box">
+                <div class = "serif">The title of the blog.</div>
+                <div class = "serif">The name of the author.</div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section id="section3" data-nav="Section 3">
+        <canvas id="myChart" width="200" height="200"></canvas>
+    </section>
+    <section id="section4" data-nav="Section 4">
+      <div class="landing__container">
+      </div>
+    </section>
+  </main>
+  <footer class="page__footer">
+    <p>&copy Asmir Abdimazhit and Vyacheslav Shen</p>
+  </footer>
+  <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src = "https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
